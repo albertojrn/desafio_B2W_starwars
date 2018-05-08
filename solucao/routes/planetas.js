@@ -6,7 +6,7 @@ var urlEncodedParser = bodyParser.urlencoded({extended: false});
 
 var planetaModel = require('../models/planetamodel');
 
-/* POST planeta. */
+/* POST planetas. */
 router.post('/planetas', urlEncodedParser, function(req, res) {
     // Cria novo planeta a partir do modelo
     var planeta = new planetaModel({
@@ -19,8 +19,8 @@ router.post('/planetas', urlEncodedParser, function(req, res) {
     if(!(validar(planeta.nome, planeta.clima, planeta.terreno))){
         res.json({ message: "Os 3 campos são obrigatórios." });
     }
-    // Verifica se o planeta com o mesmo nome existe no banco de dados
-    // Se não existir, salva um novo registro
+    /* Verifica se o planeta com o mesmo nome existe no banco de dados
+     Se não existir, salva um novo registro */
     else{
         planetaModel.find({'nome': planeta.nome}, function(erro, planetas){
             if (planetas.length > 0){
@@ -56,9 +56,9 @@ router.post('/planetas', urlEncodedParser, function(req, res) {
     }
 });
 
-/* GET planeta todos*/
+/* GET planetas -- todos ou por nome*/
 router.get('/planetas', function(req, res) {
-    //Checa se a query nome foi passada na url
+    // Checa se a query nome foi passada na url
     if(req.query.nome){
         planetaModel.find({'nome': req.query.nome}, function(erro, planetas){
             if (erro) res.send(erro);
