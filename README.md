@@ -1,9 +1,9 @@
 **INTRODUÇÃO**
 ---
-A solução apresentada é a proposta para o desafio enviado pela empresa B2W Digital.<br />
-A API foi desenvolvida utilizando Node e MongoDB.<br />
+Neste repositório encontra-se a proposta para a solução do desafio enviado pela empresa B2W Digital como parte do processo seletivo.<br />
+A solução foi desenvolvida utilizando Node e MongoDB.<br />
 A aplicação está configurada para rodar na porta 3000 (Node) e o banco de dados na porta 27017 (MongoDB).<br />
-Para rodar a aplicação (Node), executar os comandos a partir da pasta raiz da aplicação:
+Para rodar a aplicação, executar os comandos a partir da pasta raiz da aplicação, onde encontra-se o arquivo app.js:
 
 ```
 npm install
@@ -12,11 +12,10 @@ Para instalar o nodemon:
 ```
 npm install nodemon -g
 ```
-Se utilizar nodemon:
+Se utilizar o nodemon:
 ```
 nodemon app.js
 ```
-
 Também está incluído no projeto testes automatizados utilizando MOCHA e CHAI.<br />
 Os testes estão configurados no arquivo "/test/planetas.js".<br />
 Para executar os testes, utilizar o comando:
@@ -27,8 +26,6 @@ Para executar o MongoDB, utilizar:
 ```
 mongod
 ```
-OBS: Ambos os servidores devem estar rodando: MongoDB + Node
-
 **DOCUMENTAÇÃO - API DE DADOS DE PLANETAS DE STAR WARS**
 ----
 
@@ -163,7 +160,10 @@ OBS: Ambos os servidores devem estar rodando: MongoDB + Node
          }
         }
         ```
-
+  * **Código:** 500 <br />
+    Retornado quando houver algum erro, como uma consulta ao banco de dados ou inserir uma nova entrada no banco de dados.<br />
+    Um objeto contendo informações sobre o erro é retornado.<br />
+    
 * **Exemplos de Chamadas**
     ```
     $.ajax({
@@ -231,5 +231,21 @@ OBS: Ambos os servidores devem estar rodando: MongoDB + Node
 
   * **Campos de busca:** <br />
     **nome**<br />
-    Exemplo: /api/planetas/?nome=Tatooine -- faz a busca pelo nome do planeta
-  
+    Faz a busca pelo nome do planeta<br />
+    Exemplo:
+    ```
+    /api/planetas/?nome=Tatooine
+    ```
+    Retorno:
+    ```
+    [
+      {
+        _id : 5af0d0be3b0e6922807ba2cc,
+        nome: 'Alderaan',
+        clima: 'temperate',
+        terreno: 'grasslands, mountains',
+        aparicoes: 2,
+        __v: 0
+      }
+    ]
+    ```
