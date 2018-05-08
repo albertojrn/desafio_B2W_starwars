@@ -249,3 +249,7 @@ mongod
       }
     ]
     ```
+    Retorna uma lista vazia se não encontrar um planeta com o nome informado:
+    ```
+    []
+    ```
